@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piano Elite™ — Mastery, Accelerated</title>
+<!-- Simulasi parodi: seluruh transaksi di file ini fiktif, tidak ada pembayaran nyata. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060609; --panel:#101017; --panel2:#161622;
+  --gold:#d8b45a; --gold-hi:#f3e0a0; --gold-dim:#8a6f2f;
+  --ivory:#f5f1e6; --muted:#8b8b96; --line:rgba(216,180,90,.22);
+  --blue:#7fb4ff; --purple:#c07dff; --mythic:#ffd700;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ivory);font-family:'Inter',sans-serif;overflow-x:hidden}
+.serif{font-family:'Cormorant Garamond',serif}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.hidden{display:none!important}
+::selection{background:var(--gold);color:#000}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:14px;
+ padding:12px 26px;background:rgba(6,6,9,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-family:'Cormorant Garamond';font-size:1.45rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-right:auto}
+.logo small{font-size:.6rem;letter-spacing:4px;color:var(--muted);display:block;font-family:'Inter'}
+.chip{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.82rem;font-weight:600;color:var(--gold-hi);background:rgba(216,180,90,.06)}
+.chip.dim{color:var(--muted)}
+.chip.pulse{animation:pl 1.6s infinite}
+@keyframes pl{50%{box-shadow:0 0 14px rgba(216,180,90,.5)}}
+.navbtn{border:1px solid var(--gold);color:var(--gold);border-radius:6px;padding:8px 16px;font-size:.8rem;font-weight:700;letter-spacing:1px;transition:.25s}
+.navbtn:hover{background:var(--gold);color:#000;box-shadow:0 0 22px rgba(216,180,90,.35)}
+.navbtn.solid{background:linear-gradient(135deg,var(--gold),#a8842f);color:#141000;border:none}
+
+/* HERO */
+header{min-height:92vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+ background:radial-gradient(900px 480px at 50% 8%,#191926 0%,transparent 70%),var(--bg)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;max-width:1200px;padding:110px 30px 60px;align-items:center}
+.kicker{color:var(--gold);letter-spacing:5px;font-size:.72rem;font-weight:700;margin-bottom:18px}
+h1.big{font-family:'Cormorant Garamond';font-size:clamp(2.6rem,5vw,4.6rem);line-height:1.05;font-weight:600}
+h1.big em{color:var(--gold);font-style:italic}
+.hero p.lead{color:var(--muted);margin:20px 0 30px;font-size:1.02rem;line-height:1.75;font-weight:300}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{border-radius:6px;padding:14px 28px;font-weight:700;font-size:.92rem;letter-spacing:.5px;transition:.25s;display:inline-flex;align-items:center;gap:10px}
+.btn-gold{background:linear-gradient(135deg,var(--gold-hi),var(--gold) 45%,#a8842f);color:#171200;box-shadow:0 10px 34px rgba(216,180,90,.28)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(216,180,90,.4)}
+.btn-line{border:1px solid var(--line);color:var(--gold-hi)}
+.btn-line:hover{border-color:var(--gold);background:rgba(216,180,90,.08)}
+.hero-art{position:relative;display:flex;justify-content:center}
+.floatnote{position:absolute;color:var(--gold);opacity:.35;font-size:1.5rem;animation:fl 6s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-18px) rotate(10deg)}}
+.trust{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.trust div{font-size:.78rem;color:var(--muted)} .trust b{color:var(--gold-hi);display:block;font-size:1.05rem;font-family:'Cormorant Garamond'}
+
+/* ORNAMENT */
+.orn{display:flex;align-items:center;gap:16px;max-width:1100px;margin:0 auto;color:var(--gold-dim)}
+.orn::before,.orn::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.orn span{font-size:1.2rem}
+
+/* STUDIO */
+.studio{max-width:1250px;margin:0 auto;padding:70px 26px;display:grid;grid-template-columns:1fr 390px;gap:26px}
+.pbox{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lane{height:170px;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25));border:1px solid rgba(255,255,255,.05);border-bottom:2px solid var(--gold);border-radius:8px;position:relative;overflow:hidden;margin-bottom:18px}
+.fall{position:absolute;top:-46px;height:38px;border-radius:4px;background:linear-gradient(180deg,var(--gold-hi),var(--gold));box-shadow:0 0 16px rgba(216,180,90,.7)}
+.keys{position:relative;height:210px;user-select:none}
+.wk{position:absolute;top:0;bottom:0;background:linear-gradient(180deg,#fffef8 0%,#efe9da 82%,#d9d2bf 100%);border:1px solid #b7ad93;border-radius:0 0 6px 6px;transition:.07s;box-shadow:inset 0 -6px 10px rgba(0,0,0,.12)}
+.wk.on{background:linear-gradient(180deg,var(--gold-hi),var(--gold));transform:translateY(2px)}
+.bk{position:absolute;top:0;height:61%;background:linear-gradient(180deg,#3a3a44,#0c0c10 70%);border-radius:0 0 5px 5px;z-index:3;transition:.07s;box-shadow:2px 4px 8px rgba(0,0,0,.7)}
+.bk.on{background:linear-gradient(180deg,var(--gold),#7a5f22)}
+.pbar-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px;flex-wrap:wrap}
+.track{color:var(--muted);font-size:.85rem}.track b{color:var(--gold-hi)}
+.kbd-hint{color:#55555f;font-size:.72rem;margin-top:12px;text-align:center;letter-spacing:.5px}
+
+/* SIDE PANEL */
+.side{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;max-height:760px;overflow-y:auto}
+.side h3{font-family:'Cormorant Garamond';color:var(--gold);font-size:1.25rem;margin-bottom:4px}
+.side .sub{color:var(--muted);font-size:.75rem;margin-bottom:14px}
+.song{border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);border-radius:10px;padding:12px 14px;margin-bottom:9px;display:flex;align-items:center;gap:12px;transition:.2s}
+.song:hover{border-color:var(--line);background:rgba(216,180,90,.05)}
+.song .ti{flex:1;min-width:0}
+.song .ti b{display:block;font-size:.9rem;font-weight:600}
+.song .ti span{font-size:.7rem;color:var(--muted)}
+.rg{font-size:.62rem;font-weight:800;letter-spacing:1px;padding:3px 8px;border-radius:99px}
+.buy{border:1px solid var(--gold);color:var(--gold);border-radius:6px;padding:7px 12px;font-size:.75rem;font-weight:700;white-space:nowrap;transition:.2s}
+.buy:hover{background:var(--gold);color:#000}
+.buy.owned{border-color:#3f6f4f;color:#7fd49a;cursor:default}
+.rates{margin-top:18px;border:1px dashed var(--line);border-radius:10px;padding:14px;font-size:.75rem;color:var(--muted);line-height:1.9}
+.rates b{color:var(--gold-hi)}
+
+/* SECTIONS */
+section.blk{max-width:1250px;margin:0 auto;padding:60px 26px}
+h2.sec{font-family:'Cormorant Garamond';font-size:clamp(1.7rem,3vw,2.5rem);color:var(--ivory);font-weight:600}
+h2.sec em{color:var(--gold);font-style:italic}
+p.secl{color:var(--muted);margin:10px 0 30px;max-width:640px;font-weight:300;line-height:1.7}
+
+/* VAPOR FEATURES */
+.vapors{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vap{position:relative;border-radius:16px;padding:30px;overflow:hidden;border:1px solid var(--line);
+ background:linear-gradient(160deg,#1b1b2b,#101018 60%)}
+.vap::after{content:'';position:absolute;inset:0;background:radial-gradient(400px 200px at 80% 0%,rgba(216,180,90,.14),transparent 70%);pointer-events:none}
+.vap .ic{font-size:2.6rem;margin-bottom:14px;display:block}
+.vap h3{font-family:'Cormorant Garamond';font-size:1.6rem;color:var(--gold-hi);margin-bottom:8px}
+.vap .tm{font-size:.6rem;letter-spacing:3px;color:var(--purple);font-weight:800}
+.vap p{color:var(--muted);font-size:.88rem;line-height:1.75;margin:12px 0 18px;font-weight:300}
+.vap ul{list-style:none;margin-bottom:22px}
+.vap li{font-size:.8rem;color:#c9c4b4;padding:5px 0}
+.vap li::before{content:'✦ ';color:var(--gold)}
+.vap .price{font-family:'Cormorant Garamond';font-size:2rem;color:var(--gold);margin-bottom:14px}
+.vap .price s{font-size:1rem;color:var(--muted);margin-right:10px}
+
+/* SHOP 50 */
+.shopgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+.off{border:1px solid rgba(255,255,255,.07);background:var(--panel);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:.2s;position:relative}
+.off:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.off .n{position:absolute;top:8px;right:10px;font-size:.62rem;color:#4a4a55}
+.off .ic{font-size:1.7rem}
+.off b{font-size:.85rem;font-weight:600}
+.off p{font-size:.7rem;color:var(--muted);flex:1;font-weight:300}
+.off .pr{color:var(--gold);font-weight:700;font-size:.9rem}
+.off .tagx{position:absolute;top:-9px;left:12px;background:var(--gold);color:#171200;font-size:.58rem;font-weight:800;letter-spacing:1px;border-radius:99px;padding:3px 9px}
+
+/* GALLERY */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.gcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.gcard .art{background:radial-gradient(300px 160px at 50% 20%,#20202e,transparent),#0b0b12;display:flex;align-items:center;justify-content:center;padding:26px}
+.gcard .cap{padding:18px 20px;border-top:1px solid var(--line)}
+.gcard .cap b{font-family:'Cormorant Garamond';font-size:1.15rem;color:var(--gold-hi);display:block}
+.gcard .cap span{font-size:.75rem;color:var(--muted);font-weight:300}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);margin-top:40px;padding:50px 26px;text-align:center;color:var(--muted);font-size:.8rem;font-weight:300}
+footer .fl{font-family:'Cormorant Garamond';color:var(--gold);font-size:1.3rem;margin-bottom:10px}
+
+/* MODALS */
+.mo{position:fixed;inset:0;z-index:300;background:rgba(3,3,6,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:18px}
+.mb{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--gold);border-radius:16px;max-width:520px;width:100%;padding:32px;position:relative;animation:pop .3s}
+@keyframes pop{from{transform:scale(.9);opacity:0}}
+.mb .x{position:absolute;top:12px;right:16px;color:var(--muted);font-size:1.4rem}
+.mb h3{font-family:'Cormorant Garamond';font-size:1.7rem;color:var(--gold-hi);margin-bottom:6px}
+.mb .d{color:var(--muted);font-size:.86rem;line-height:1.6;font-weight:300}
+.mb .pr{font-family:'Cormorant Garamond';font-size:2.2rem;color:var(--gold);margin:16px 0}
+.payrow{display:flex;flex-direction:column;gap:9px;margin:16px 0}
+.payrow button{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px;font-size:.86rem;font-weight:600;text-align:left;transition:.2s}
+.payrow button:hover{border-color:var(--gold);background:rgba(216,180,90,.07)}
+.fine{font-size:.68rem;color:#5b5b66;text-align:center;margin-top:12px}
+
+/* WIZARD 8 STAGE */
+.steps{display:flex;gap:6px;margin:18px 0}
+.steps i{flex:1;height:5px;border-radius:99px;background:rgba(255,255,255,.1)}
+.steps i.done{background:var(--gold)}
+.steps i.cur{background:linear-gradient(90deg,var(--gold),var(--gold-hi));box-shadow:0 0 10px rgba(216,180,90,.6)}
+.wz-fee{border:1px solid var(--line);border-radius:10px;padding:16px;margin:14px 0;background:rgba(216,180,90,.05)}
+.wz-fee b{color:var(--gold-hi)} .wz-fee .fp{float:right;color:var(--gold);font-weight:700}
+.wz-total{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:14px}
+.wz-total b{color:var(--ivory)}
+.abort{font-size:.7rem;color:#6a5a5a;text-decoration:underline;margin-top:12px}
+
+/* GACHA */
+.gacha{flex-direction:column}
+.rays{position:absolute;width:560px;height:560px;border-radius:50%;
+ background:repeating-conic-gradient(rgba(216,180,90,.16) 0 8deg,transparent 8deg 16deg);animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chest{position:relative;width:280px;height:220px;margin-bottom:26px;filter:drop-shadow(0 0 34px rgba(216,180,90,.35))}
+.chest .lid{position:absolute;top:0;left:0;right:0;height:46%;border-radius:120px 120px 0 0;
+ background:linear-gradient(160deg,#8a5a2b,#4c2d12);border:3px solid var(--gold);border-bottom:none;transform-origin:bottom;transition:transform .9s cubic-bezier(.3,1.4,.5,1)}
+.chest .body{position:absolute;bottom:0;left:0;right:0;height:58%;border-radius:10px;
+ background:linear-gradient(160deg,#7a4c22,#3c2410);border:3px solid var(--gold)}
+.chest .lock{position:absolute;top:38%;left:50%;transform:translateX(-50%);width:36px;height:46px;background:linear-gradient(160deg,var(--gold-hi),var(--gold));border-radius:6px;z-index:4;box-shadow:0 0 18px rgba(216,180,90,.8)}
+.chest .lock::after{content:'';position:absolute;top:14px;left:13px;width:10px;height:16px;background:#241505;border-radius:3px}
+.chest.open .lid{transform:rotateX(-115deg)}
+.gopts{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;z-index:5}
+.gbtn{min-width:180px;border:2px solid var(--gold);border-radius:10px;padding:16px 20px;background:linear-gradient(180deg,#232332,#15151f);transition:.25s;text-align:center}
+.gbtn:hover{background:var(--gold);color:#171200;box-shadow:0 0 40px rgba(216,180,90,.45)}
+.gbtn b{display:block;font-family:'Cormorant Garamond';font-size:1.2rem}
+.gbtn span{font-size:.8rem;opacity:.85}
+.gbtn small{display:block;font-size:.62rem;opacity:.6;margin-top:4px}
+.later{margin-top:22px;color:#55555f;font-size:.75rem;text-decoration:underline;z-index:5}
+
+/* RESULT */
+.res{text-align:center}
+.res .rar{font-size:.7rem;letter-spacing:4px;font-weight:800;margin-bottom:8px}
+.res .item{font-family:'Cormorant Garamond';font-size:2rem;color:var(--ivory);margin:6px 0 10px}
+.res .flv{color:var(--muted);font-size:.85rem;font-style:italic;margin-bottom:22px;font-weight:300}
+
+/* VAPOR PROGRESS */
+.vbar{height:10px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin:18px 0 8px}
+.vbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--gold));transition:width 3.5s cubic-bezier(.2,.7,.3,1)}
+.vstat{font-size:.78rem;color:var(--purple);min-height:20px;font-style:italic}
+.ups{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.ups button{border:1px solid var(--purple);color:var(--purple);border-radius:8px;padding:10px 14px;font-size:.76rem;font-weight:700;transition:.2s}
+.ups button:hover{background:var(--purple);color:#fff}
+
+/* OFFER POPUP */
+.offerbox{border-color:var(--gold);text-align:center}
+.offerbox .big-ic{font-size:3rem}
+.offerbox .old{color:var(--muted);text-decoration:line-through;font-size:1rem;margin-right:10px}
+.offerbox .cd{margin-top:14px;font-size:.72rem;color:var(--muted)}
+.cdbar{height:4px;background:rgba(255,255,255,.1);border-radius:99px;margin-top:6px;overflow:hidden}
+.cdbar i{display:block;height:100%;background:var(--gold);width:100%}
+
+/* TOASTS */
+#toasts{position:fixed;top:70px;right:16px;z-index:400;display:flex;flex-direction:column;gap:9px}
+.toast{background:#191924;border:1px solid var(--gold);border-radius:10px;padding:11px 16px;font-size:.82rem;font-weight:600;box-shadow:0 12px 34px rgba(0,0,0,.6);animation:tin .3s;max-width:320px}
+.toast.bad{border-color:#a05252}
+@keyframes tin{from{transform:translateX(50px);opacity:0}}
+.conf{position:fixed;top:-14px;width:9px;height:13px;border-radius:2px;z-index:500;animation:cf linear forwards}
+@keyframes cf{to{transform:translateY(105vh) rotate(760deg)}}
+
+@media(max-width:1000px){.hero{grid-template-columns:1fr}.studio{grid-template-columns:1fr}.vapors{grid-template-columns:1fr}.gal{grid-template-columns:1fr}.keys{height:160px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">PIANO ELITE<small>MASTERY · ACCELERATED</small></div>
+  <span class="chip" id="wallet">$500.00</span>
+  <span class="chip dim" id="patron">GUEST</span>
+  <span class="chip pulse hidden" id="chipSync" title="NeuroSync status">🧠 99%</span>
+  <span class="chip pulse hidden" id="chipHolo" title="Maestro Hologram status">👻 calibrating</span>
+  <button class="navbtn" onclick="openGacha()">🎁 CHEST</button>
+  <button class="navbtn solid" onclick="scrollTo2('shop')">ADD FUNDS</button>
+</nav>
+
+<header>
+  <div class="hero">
+    <div>
+      <div class="kicker">THE CONSERVATORY, REIMAGINED</div>
+      <h1 class="big">Jago piano dalam <em>2–3 bulan.</em><br>Atau semalam, jika Anda <em>berkelas.</em></h1>
+      <p class="lead">Metode konservatori tradisional memakan waktu bertahun-tahun. Piano Elite™ memadukan pedagogi klasik dengan akselerasi berbasis investasi pribadi — semakin Anda berinvestasi, semakin cepat tangan Anda mengerti maksud alam semesta.</p>
+      <div class="cta">
+        <button class="btn btn-gold" onclick="freeLesson()">▶ Ambil Pelajaran Gratis</button>
+        <button class="btn btn-line" onclick="scrollTo2('shop')">Lihat 50 Penawaran</button>
+      </div>
+      <div class="trust">
+        <div><b>2.4 jt</b>siswa terdaftar</div>
+        <div><b>4.9★</b>rating (kurasi internal)</div>
+        <div><b>50+</b>jalur akselerasi</div>
+        <div><b>∞</b>potensi Anda</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <span class="floatnote" style="top:6%;left:12%">♪</span>
+      <span class="floatnote" style="top:14%;right:10%;animation-delay:1.2s">♫</span>
+      <span class="floatnote" style="bottom:12%;left:6%;animation-delay:2s">♩</span>
+      <!-- GRAND PIANO SVG -->
+      <svg width="430" height="330" viewBox="0 0 430 330" fill="none">
+        <defs>
+          <linearGradient id="gld" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f3e0a0"/><stop offset=".5" stop-color="#d8b45a"/><stop offset="1" stop-color="#8a6f2f"/>
+          </linearGradient>
+          <linearGradient id="bod" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#23232f"/><stop offset="1" stop-color="#0d0d13"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="215" cy="300" rx="180" ry="16" fill="#000" opacity=".55"/>
+        <path d="M60 150 L60 120 Q60 96 96 92 L250 74 Q318 66 344 96 L368 124 L382 128 L382 150 Z" fill="url(#bod)" stroke="url(#gld)" stroke-width="2.5"/>
+        <path d="M60 120 L330 40 L344 96" fill="none" stroke="url(#gld)" stroke-width="2.5"/>
+        <path d="M330 40 L352 34 L368 90 L344 96 Z" fill="#15151d" stroke="url(#gld)" stroke-width="2"/>
+        <rect x="52" y="150" width="338" height="26" rx="6" fill="#111118" stroke="url(#gld)" stroke-width="2"/>
+        <g>
+          <rect x="60" y="154" width="22" height="18" rx="2" fill="#f5f1e6"/><rect x="84" y="154" width="22" height="18" rx="2" fill="#efe9da"/>
+          <rect x="108" y="154" width="22" height="18" rx="2" fill="#f5f1e6"/><rect x="132" y="154" width="22" height="18" rx="2" fill="#efe9da"/>
+          <rect x="156" y="154" width="22" height="18" rx="2" fill="#f5f1e6"/><rect x="180" y="154" width="22" height="18" rx="2" fill="#efe9da"/>
+          <rect x="204" y="154" width="22" height="18" rx="2" fill="#f5f1e6"/><rect x="228" y="154" width="22" height="18" rx="2" fill="#efe9da"/>
+          <rect x="252" y="154" width="22" height="18" rx="2" fill="#f5f1e6"/><rect x="276" y="154" width="22" height="18" rx="2" fill="#efe9da"/>
+          <rect x="300" y="154" width="22" height="18" rx="2" fill="#f5f1e6"/><rect x="324" y="154" width="22" height="18" rx="2" fill="#efe9da"/>
+          <rect x="348" y="154" width="22" height="18" rx="2" fill="#f5f1e6"/>
+          <rect x="78" y="154" width="13" height="11" rx="2" fill="#0c0c10"/><rect x="102" y="154" width="13" height="11" rx="2" fill="#0c0c10"/>
+          <rect x="150" y="154" width="13" height="11" rx="2" fill="#0c0c10"/><rect x="174" y="154" width="13" height="11" rx="2" fill="#0c0c10"/>
+          <rect x="198" y="154" width="13" height="11" rx="2" fill="#0c0c10"/><rect x="246" y="154" width="13" height="11" rx="2" fill="#0c0c10"/>
+          <rect x="270" y="154" width="13" height="11" rx="2" fill="#0c0c10"/><rect x="318" y="154" width="13" height="11" rx="2" fill="#0c0c10"/>
+          <rect x="342" y="154" width="13" height="11" rx="2" fill="#0c0c10"/>
+        </g>
+        <path d="M92 176 L92 292 M352 176 L352 292 M222 176 L222 288" stroke="url(#gld)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M80 292 L104 292 M340 292 L364 292 M210 288 L234 288" stroke="url(#gld)" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="330" cy="40" r="4" fill="#f3e0a0"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="orn"><span>❦</span></div>
+
+<!-- STUDIO -->
+<div class="studio" id="studio">
+  <div class="pbox">
+    <div class="lane" id="lane"></div>
+    <div class="keys" id="keys"></div>
+    <div class="pbar-row">
+      <div class="track">Sedang dipelajari: <b id="curTrack">Twinkle Twinkle Little Star</b></div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-line" style="padding:9px 16px;font-size:.78rem" onclick="stopDemo()">■ Stop</button>
+        <button class="btn btn-gold" style="padding:9px 16px;font-size:.78rem" onclick="lessonCurrent()">♪ Putar Lesson</button>
+      </div>
+    </div>
+    <div class="kbd-hint">Keyboard: A S D F G H J K L ; ' = tuts putih · W E T Y U O P = tuts hitam · atau klik langsung</div>
+  </div>
+
+  <div class="side">
+    <h3>Perpustakaan Lagu</h3>
+    <div class="sub">Lagu anak tersedia langsung. Karya maestro dibuka melalui pembelian langsung atau Chest of Masters.</div>
+    <div id="songList"></div>
+    <div class="rates">
+      <b>DROP RATES CHEST OF MASTERS</b><br>
+      Common · 70% &nbsp;|&nbsp; Rare · 20%<br>
+      Legendary · 9% &nbsp;|&nbsp; <b>Mythic · 1%</b><br>
+      <span style="opacity:.7">Rate mencakup seluruh isi chest.</span>
+    </div>
+  </div>
+</div>
+
+<div class="orn"><span>❦</span></div>
+
+<!-- VAPORWARE -->
+<section class="blk">
+  <h2 class="sec">Teknologi <em>Eksklusif</em> Piano Elite</h2>
+  <p class="secl">Dua inovasi yang belum dimiliki aplikasi mana pun di bumi. Keduanya tersedia hari ini, untuk Anda yang siap berada di depan garis waktu.</p>
+  <div class="vapors">
+    <div class="vap">
+      <span class="ic">🧠</span>
+      <span class="tm">PATENT PENDING · LAB SERIES</span>
+      <h3>NeuroSync™ Skill Transfer</h3>
+      <p>Saat Anda tidur, NeuroSync™ mengunggah memori otot pianis konser langsung ke tangan Anda. Bangun pagi dan mainkan Liszt tanpa pernah berlatih. Efek dilaporkan menumpuk setiap malam — semakin Anda investasikan, semakin dalam sinkronisasinya.</p>
+      <ul>
+        <li>Transfer motorik nocturnal otomatis</li>
+        <li>Kompatibel dengan semua tingkat tidur</li>
+        <li>Hasil terasa sejak sesi pertama (klaim pengguna awal)</li>
+      </ul>
+      <div class="price"><s>$199.99</s>$149.99</div>
+      <button class="btn btn-gold" onclick="vaporOpen('sync')">Aktifkan NeuroSync™</button>
+    </div>
+    <div class="vap">
+      <span class="ic">👻</span>
+      <span class="tm">HOLOGRAPHIC FACULTY</span>
+      <h3>Maestro Hologram™ Live Mentor</h3>
+      <p>Hologram volumetrik seorang maestro legendaris hadir di samping piano Anda, membetulkan postur hanya dengan satu raised eyebrow. Termasuk lifetime glare, akses ke diam penuh makna, dan applause etereal saat Anda selesai bermain.</p>
+      <ul>
+        <li>Proyeksi 360° beresolusi emosional tinggi</li>
+        <li>Koreksi postur non-verbal tingkat konservatori</li>
+        <li>Maestro tidak pernah tidur; ia hanya menunggu</li>
+      </ul>
+      <div class="price"><s>$259.99</s>$199.99</div>
+      <button class="btn btn-gold" onclick="vaporOpen('holo')">Hadirkan Maestro</button>
+    </div>
+  </div>
+</section>
+
+<div class="orn"><span>❦</span></div>
+
+<!-- SHOP 50 -->
+<section class="blk" id="shop">
+  <h2 class="sec">Boutique — <em>50 Jalur Akselerasi</em></h2>
+  <p class="secl">Setiap item dirancang untuk memperpendek jarak antara Anda dan panggung. Beberapa berfungsi, sebagian bersifat simbolis, semuanya bergengsi.</p>
+  <div class="shopgrid" id="shopGrid"></div>
+</section>
+
+<div class="orn"><span>❦</span></div>
+
+<!-- GALLERY -->
+<section class="blk">
+  <h2 class="sec">Galeri <em>Instrumental</em></h2>
+  <p class="secl">Karena mata juga perlu berlatih.</p>
+  <div class="gal">
+    <div class="gcard"><div class="art">
+      <svg width="240" height="150" viewBox="0 0 430 330"><path d="M60 150 L60 120 Q60 96 96 92 L250 74 Q318 66 344 96 L368 124 L382 128 L382 150 Z" fill="#15151d" stroke="#d8b45a" stroke-width="4"/><path d="M60 120 L330 40 L344 96" stroke="#d8b45a" stroke-width="4" fill="none"/><rect x="52" y="150" width="338" height="26" rx="6" fill="#0d0d13" stroke="#d8b45a" stroke-width="4"/><path d="M92 176 L92 292 M352 176 L352 292" stroke="#d8b45a" stroke-width="8" stroke-linecap="round"/></svg>
+    </div><div class="cap"><b>Grand de Concert</b><span>Simbol setiap keputusan finansial yang benar.</span></div></div>
+    <div class="gcard"><div class="art">
+      <svg width="170" height="160" viewBox="0 0 200 200"><rect x="30" y="20" width="140" height="120" rx="8" fill="#15151d" stroke="#d8b45a" stroke-width="4"/><rect x="42" y="96" width="116" height="16" rx="3" fill="#f5f1e6"/><g fill="#0c0c10"><rect x="56" y="96" width="9" height="10"/><rect x="74" y="96" width="9" height="10"/><rect x="100" y="96" width="9" height="10"/><rect x="118" y="96" width="9" height="10"/><rect x="136" y="96" width="9" height="10"/></g><path d="M46 140 L46 186 M154 140 L154 186" stroke="#d8b45a" stroke-width="6" stroke-linecap="round"/><rect x="60" y="40" width="80" height="34" rx="4" fill="none" stroke="#8a6f2f" stroke-width="3"/></svg>
+    </div><div class="cap"><b>Upright Heritage</b><span>Tempat semua cerita pemula dimulai (dan beberapa berakhir).</span></div></div>
+    <div class="gcard"><div class="art">
+      <svg width="240" height="120" viewBox="0 0 300 120"><g><rect x="6" y="10" width="26" height="100" rx="3" fill="#f5f1e6"/><rect x="34" y="10" width="26" height="100" rx="3" fill="#efe9da"/><rect x="62" y="10" width="26" height="100" rx="3" fill="#f5f1e6"/><rect x="90" y="10" width="26" height="100" rx="3" fill="#efe9da"/><rect x="118" y="10" width="26" height="100" rx="3" fill="#f5f1e6"/><rect x="146" y="10" width="26" height="100" rx="3" fill="#efe9da"/><rect x="174" y="10" width="26" height="100" rx="3" fill="#f5f1e6"/><rect x="202" y="10" width="26" height="100" rx="3" fill="#efe9da"/><rect x="230" y="10" width="26" height="100" rx="3" fill="#f5f1e6"/><rect x="258" y="10" width="26" height="100" rx="3" fill="#efe9da"/></g><g fill="#0c0c10"><rect x="26" y="10" width="16" height="58" rx="2"/><rect x="54" y="10" width="16" height="58" rx="2"/><rect x="110" y="10" width="16" height="58" rx="2"/><rect x="138" y="10" width="16" height="58" rx="2"/><rect x="166" y="10" width="16" height="58" rx="2"/><rect x="222" y="10" width="16" height="58" rx="2"/><rect x="250" y="10" width="16" height="58" rx="2"/></g></svg>
+    </div><div class="cap"><b>Keyscape Macro</b><span>88 pintu. Sebagian terkunci dengan sangat elegan.</span></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">PIANO ELITE™</div>
+  Where mastery meets opportunity. · Boutique 50 item · Chest of Masters · NeuroSync™ & Maestro Hologram™ eksklusif.<br>
+  © 2026 Piano Elite Conservatory Group. Seluruh harga dalam USD.
+</footer>
+
+<!-- ===== MODALS ===== -->
+<div class="mo hidden" id="mCheckout"><div class="mb">
+  <button class="x" onclick="closeMo('mCheckout')">×</button>
+  <h3 id="coTitle"></h3><div class="d" id="coDesc"></div>
+  <div class="pr" id="coPrice"></div>
+  <div class="payrow">
+    <button onclick="paySimple()">💳 Kartu Kredit / Debit</button>
+    <button onclick="paySimple()">📱 Quick Pay</button>
+    <button onclick="paySimple()">🏦 Transfer Bank</button>
+  </div>
+  <div class="fine">Transaksi diproses oleh Piano Elite Payments.</div>
+</div></div>
+
+<div class="mo hidden" id="mWizard"><div class="mb">
+  <h3 id="wzTitle"></h3>
+  <div class="steps" id="wzSteps"></div>
+  <div class="d" id="wzStageName" style="font-size:.72rem;letter-spacing:2px;color:var(--gold)"></div>
+  <div class="wz-fee"><span class="fp" id="wzFee"></span><b id="wzFeeName"></b><div class="d" id="wzFeeDesc" style="margin-top:6px"></div></div>
+  <div class="wz-total"><span>Total terbayar sejauh ini</span><b id="wzPaid"></b></div>
+  <div class="wz-total"><span>Sisa untuk menyelesaikan aktivasi</span><b id="wzLeft"></b></div>
+  <button class="btn btn-gold" style="width:100%;justify-content:center" id="wzBtn"></button>
+  <div style="text-align:center"><button class="abort" onclick="wzAbort()">Batalkan (tahap yang sudah dibayar hangus)</button></div>
+</div></div>
+
+<div class="mo hidden gacha" id="mGacha" style="flex-direction:column">
+  <div class="rays"></div>
+  <div class="chest" id="chest"><div class="lid"></div><div class="body"></div><div class="lock"></div></div>
+  <h3 class="serif" style="font-size:2.2rem;color:var(--gold-hi);z-index:5">Chest of Masters</h3>
+  <div class="d" style="color:var(--muted);margin:8px 0 24px;z-index:5;text-align:center;max-width:440px">Berisi karya-karya agung dari segala era. Semakin mahal chest, semakin terang cahaya di dalamnya.</div>
+  <div class="gopts">
+    <button class="gbtn" onclick="rollChest(49.99,this)"><b>Bronze Chest</b><span>$49.99</span><small>1 roll</small></button>
+    <button class="gbtn" onclick="rollChest(99.99,this)"><b>Silver Chest</b><span>$99.99</span><small>cahaya +20%</small></button>
+    <button class="gbtn" onclick="rollChest(199.99,this)"><b>GOLDEN CHEST</b><span>$199.99</span><small>best value</small></button>
+  </div>
+  <button class="later" onclick="closeMo('mGacha')">Nanti saja</button>
+</div>
+
+<div class="mo hidden" id="mResult"><div class="mb res">
+  <div class="rar" id="rsRar"></div>
+  <div style="font-size:3rem" id="rsIcon"></div>
+  <div class="item" id="rsItem"></div>
+  <div class="flv" id="rsFlv"></div>
+  <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="closeMo('mResult')">Koleksi</button>
+</div></div>
+
+<div class="mo hidden" id="mTopup"><div class="mb">
+  <button class="x" onclick="closeMo('mTopup')">×</button>
+  <h3>Add Funds</h3>
+  <div class="d">Saldo Anda saat ini: <b id="tuBal" style="color:var(--gold)"></b></div>
+  <div class="payrow" id="tuList" style="margin-top:16px"></div>
+  <div class="fine">Bonus kredit diterapkan otomatis.</div>
+</div></div>
+
+<div class="mo hidden" id="mVapor"><div class="mb">
+  <button class="x" onclick="vaporClose()">×</button>
+  <h3 id="vpTitle"></h3>
+  <div class="d" id="vpDesc"></div>
+  <div class="vbar"><i id="vpBar"></i></div>
+  <div class="vstat" id="vpStat"></div>
+  <div class="ups" id="vpUps"></div>
+  <div style="margin-top:18px;text-align:center"><button class="btn btn-line" style="padding:9px 18px;font-size:.76rem" onclick="vaporClose()">Biarkan kalibrasi berjalan di latar belakang</button></div>
+</div></div>
+
+<div class="mo hidden" id="mOffer"><div class="mb offerbox">
+  <button class="x" onclick="closeMo('mOffer')">×</button>
+  <div class="big-ic" id="ofIcon"></div>
+  <h3 id="ofTitle" style="margin-top:8px"></h3>
+  <div class="d" id="ofDesc"></div>
+  <div class="pr"><span class="old" id="ofOld"></span><span id="ofNew"></span></div>
+  <button class="btn btn-gold" style="width:100%;justify-content:center" id="ofBtn"></button>
+  <div class="cd">Penawaran berakhir dalam <span id="ofSec">27</span>s<div class="cdbar"><i id="ofBar"></i></div></div>
+</div></div>
+
+<div id="toasts"></div>
+
+<script>
+/* ============ STATE ============ */
+const S={bal:500,spent:0,owned:['twinkle'],cur:'twinkle'};
+const $=id=>document.getElementById(id);
+const money=n=>'$'+n.toFixed(2);
+function toast(m,bad){const t=document.createElement('div');t.className='toast'+(bad?' bad':'');t.textContent=m;$('toasts').appendChild(t);setTimeout(()=>t.remove(),4200);}
+function confetti(n){const c=['#d8b45a','#f3e0a0','#c07dff','#7fb4ff','#fff'];for(let i=0;i<n;i++){const d=document.createElement('div');d.className='conf';d.style.left=Math.random()*100+'vw';d.style.background=c[i%5];d.style.animationDuration=(2+Math.random()*2)+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),4200);}}
+function scrollTo2(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function patronTier(){const s=S.spent;if(s>=1000)return 'WHALE MAESTRO 🐋';if(s>=600)return 'DIAMOND PATRON';if(s>=300)return 'GOLD PATRON';if(s>=100)return 'SILVER PATRON';return 'GUEST';}
+function updNav(){$('wallet').textContent=money(S.bal);$('patron').textContent=patronTier();$('tuBal').textContent=money(S.bal);}
+function deduct(a){if(S.bal<a){toast('Saldo tidak mencukupi. Add Funds terbuka.',true);openMo('mTopup');return false;}S.bal-=a;S.spent+=a;updNav();return true;}
+function openMo(id){$(id).classList.remove('hidden');}
+function closeMo(id){$(id).classList.add('hidden');}
+
+/* ============ AUDIO ============ */
+let AC=null;const ctx=()=>AC||(AC=new (window.AudioContext||window.webkitAudioContext)());
+const SEMI={C:0,'C#':1,D:2,'D#':3,E:4,F:5,'F#':6,G:7,'G#':8,A:9,'A#':10,B:11};
+function freq(n){const m=n.match(/^([A-G]#?)(\d)$/);return 440*Math.pow(2,(((+m[2])+1)*12+SEMI[m[1]]-69)/12);}
+function tone(n,d=.6){const c=ctx(),o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=freq(n);
+ g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.32,c.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+d);
+ o.connect(g).connect(c.destination);o.start();o.stop(c.currentTime+d+.05);}
+
+/* ============ KEYBOARD ============ */
+const WHITES=['C4','D4','E4','F4','G4','A4','B4','C5','D5','E5','F5','G5','A5','B5','C6'];
+const BLACKS={'C4':'C#4','D4':'D#4','F4':'F#4','G4':'G#4','A4':'A#4','C5':'C#5','D5':'D#5','F5':'F#5','G5':'G#5','A5':'A#5'};
+const frac={};const keysEl=$('keys');const w=100/WHITES.length;
+WHITES.forEach((n,i)=>{frac[n]=(i+.5)/WHITES.length;const k=document.createElement('div');k.className='wk';k.dataset.n=n;
+ k.style.left=i*w+'%';k.style.width=w+'%';keysEl.appendChild(k);});
+Object.entries(BLACKS).forEach(([wn,bn])=>{const i=WHITES.indexOf(wn);frac[bn]=(i+1)/WHITES.length;
+ const k=document.createElement('div');k.className='bk';k.dataset.n=bn;k.style.left=`calc(${(i+1)*w}% - ${w*.31}%)`;k.style.width=w*.62+'%';keysEl.appendChild(k);});
+keysEl.addEventListener('pointerdown',e=>{const k=e.target.closest('[data-n]');if(k)hit(k.dataset.n);});
+const KMAP={a:'C4',s:'D4',d:'E4',f:'F4',g:'G4',h:'A4',j:'B4',k:'C5',l:'D5',';':'E5',"'":'F5',w:'C#4',e:'D#4',t:'F#4',y:'G#4',u:'A#4',o:'C#5',p:'D#5'};
+document.addEventListener('keydown',e=>{if(e.repeat)return;const n=KMAP[e.key.toLowerCase()];if(n)hit(n);});
+function hit(n){tone(n);flash(n);}
+function flash(n){const k=keysEl.querySelector(`[data-n="${n}"]`);if(!k)return;k.classList.add('on');setTimeout(()=>k.classList.remove('on'),240);}
+
+/* ============ FALLING NOTES + LESSON ============ */
+let timers=[];
+function stopDemo(){timers.forEach(clearTimeout);timers=[];}
+function spawnFall(n,ms){const l=$('lane');const d=document.createElement('div');d.className='fall';
+ d.style.left=`calc(${frac[n]*100}% - 14px)`;d.style.width='28px';l.appendChild(d);
+ requestAnimationFrame(()=>{d.style.transition=`top ${ms}ms linear`;d.style.top='100%';});
+ setTimeout(()=>d.remove(),ms+60);}
+function playSong(song,slow=1){stopDemo();const spb=60/song.bpm*slow*1000;const FALL=1400;let t=0;
+ song.notes.forEach(([n,b])=>{const dur=b*spb;
+  timers.push(setTimeout(()=>spawnFall(n,FALL),t));
+  timers.push(setTimeout(()=>{tone(n,Math.min(1.1,dur/1000*.95));flash(n);},t+FALL));
+  t+=dur;});
+ timers.push(setTimeout(()=>toast('✨ Lesson selesai. Tangan Anda 0.01% lebih bijak.'),t+FALL));}
+function lessonCurrent(){const s=SONGS.find(x=>x.id===S.cur);playSong(s,s.id==='twinkle'?1.15:1);}
+function freeLesson(){scrollTo2('studio');setTimeout(()=>lessonCurrent(),600);}
+
+/* ============ SONGS ============ */
+const SONGS=[
+ {id:'twinkle',t:'Twinkle Twinkle Little Star',cat:'Lagu Anak · Gratis',price:0,bpm:66,notes:[['C4',1],['C4',1],['G4',1],['G4',1],['A4',1],['A4',1],['G4',2],['F4',1],['F4',1],['E4',1],['E4',1],['D4',1],['D4',1],['C4',2]]},
+ {id:'mary',t:'Mary Had a Little Lamb',cat:'Lagu Anak',price:4.99,bpm:100,notes:[['E4',1],['D4',1],['C4',1],['D4',1],['E4',1],['E4',1],['E4',2],['D4',1],['D4',1],['D4',2],['E4',1],['G4',1],['G4',2],['E4',1],['D4',1],['C4',1],['D4',1],['E4',1],['E4',1],['E4',1],['E4',1],['D4',1],['D4',1],['E4',1],['D4',1],['C4',2]]},
+ {id:'row',t:'Row Row Row Your Boat',cat:'Lagu Anak',price:5.99,bpm:92,notes:[['C4',1],['C4',1],['C4',1],['D4',1],['E4',2],['E4',1],['D4',1],['E4',1],['F4',1],['G4',2],['C5',.5],['C5',.5],['C5',.5],['G4',.5],['G4',.5],['G4',.5],['E4',.5],['E4',.5],['E4',.5],['C4',.5],['C4',.5],['C4',.5],['G4',1],['F4',1],['E4',1],['D4',1],['C4',2]]},
+ {id:'abc',t:'ABC Song',cat:'Lagu Anak',price:6.49,bpm:100,notes:[['C4',1],['C4',1],['G4',1],['G4',1],['A4',1],['A4',1],['G4',2],['F4',1],['F4',1],['E4',1],['E4',1],['D4',1],['D4',1],['C4',2]]},
+ {id:'balonku',t:'Balonku Ada Lima',cat:'Lagu Anak',price:5.49,bpm:90,notes:[['G4',1],['G4',1],['E4',1],['G4',1],['G4',1],['E4',1],['C4',2],['D4',1],['E4',1],['D4',1],['C4',1],['D4',2],['E4',1],['G4',1],['E4',1],['C4',2]]},
+ {id:'pelangi',t:'Pelangi-Pelangi',cat:'Lagu Anak',price:6.99,bpm:90,notes:[['G4',1],['G4',1],['C5',1],['C5',1],['D5',1],['D5',1],['C5',2],['D5',1],['D5',1],['C5',1],['C5',1],['B4',1],['B4',1],['A4',2]]},
+ {id:'cicak',t:'Cicak-Cicak di Dinding',cat:'Lagu Anak',price:7.49,bpm:95,notes:[['C4',1],['C4',1],['D4',1],['D4',1],['E4',1],['E4',1],['D4',2],['E4',1],['E4',1],['F4',1],['F4',1],['G4',2],['G4',.5],['A4',.5],['G4',.5],['F4',.5],['E4',1],['E4',1],['D4',1],['D4',1],['C4',2]]},
+ {id:'baa',t:'Baa Baa Black Sheep',cat:'Lagu Anak',price:7.99,bpm:100,notes:[['C4',1],['C4',1],['G4',1],['G4',1],['A4',1],['A4',1],['G4',2],['F4',1],['F4',1],['E4',1],['E4',1],['D4',1],['D4',1],['C4',2]]},
+ {id:'fur',t:'Für Elise',cat:'Masterpiece · Beethoven',price:79.99,bpm:120,notes:[['E5',.5],['D#5',.5],['E5',.5],['D#5',.5],['E5',.5],['B4',.5],['D5',.5],['C5',.5],['A4',1.5],['C4',.5],['E4',.5],['A4',.5],['B4',1.5],['E4',.5],['G#4',.5],['B4',.5],['C5',1.5]]},
+ {id:'moon',t:'Moonlight Sonata',cat:'Masterpiece · Beethoven',price:99.99,bpm:60,notes:[['G#4',.8],['C#5',.8],['E5',.8],['G#4',.8],['C#5',.8],['E5',.8],['A4',.8],['C#5',.8],['E5',.8],['B4',.8],['D5',.8],['E5',1.6]]},
+ {id:'canon',t:'Canon in D',cat:'Masterpiece · Pachelbel',price:119.99,bpm:80,notes:[['F#5',1],['E5',1],['D5',1],['C#5',1],['B4',1],['A4',1],['B4',1],['C#5',1],['D5',1],['C#5',1],['B4',1],['A4',1],['G4',1],['F#4',1],['G4',1],['E4',2]]},
+ {id:'turk',t:'Turkish March',cat:'Masterpiece · Mozart',price:129.99,bpm:140,notes:[['A4',.5],['B4',.5],['C5',.5],['A4',.5],['B4',.5],['C5',.5],['C5',.5],['D5',.5],['C5',.5],['B4',.5],['A4',.5],['G#4',.5],['A4',1],['E5',.5],['F5',.5],['G5',.5],['E5',.5],['F5',.5],['G5',.5],['G5',.5],['A5',.5],['G5',.5],['F5',.5],['E5',.5],['D#5',.5],['E5',2]]},
+ {id:'noc',t:'Nocturne Op.9 No.2',cat:'Masterpiece · Chopin',price:149.99,bpm:70,notes:[['G4',.5],['F5',1],['E5',.5],['F5',.5],['E5',.5],['D5',1],['E5',.5],['B4',2],['A4',.5],['B4',.5],['D5',.5],['C5',1],['B4',.5],['A4',.5],['G4',2]]},
+ {id:'river',t:'River Flows in You',cat:'Masterpiece · Yiruma',price:179.99,bpm:85,notes:[['C#5',1],['B4',.5],['A4',.5],['B4',1],['C#5',1],['E5',1],['D5',1],['C#5',1],['B4',1],['A4',1],['C#5',1],['B4',2]]},
+ {id:'ball',t:'Ballade pour Adeline',cat:'Masterpiece · Clayderman',price:199.99,bpm:95,notes:[['E5',.5],['F5',.5],['G5',.5],['F5',.5],['E5',.5],['D5',.5],['E5',1],['C5',1],['D5',.5],['E5',.5],['F5',.5],['E5',.5],['D5',.5],['C5',.5],['D5',1],['A4',2]]},
+ {id:'clair',t:'Clair de Lune',cat:'Masterpiece · Debussy',price:229.99,bpm:70,notes:[['E5',1],['F5',.5],['E5',.5],['C5',2],['D5',1],['E5',.5],['D5',.5],['A4',2],['C5',1],['D5',.5],['C5',.5],['G4',2]]},
+ {id:'camp',t:'La Campanella',cat:'Masterpiece · Liszt',price:249.99,bpm:150,notes:[['A5',.5],['G#5',.5],['A5',.5],['E5',.5],['A5',.5],['G#5',.5],['A5',.5],['E5',.5],['F#5',.5],['G#5',.5],['A5',.5],['G#5',.5],['A5',.5],['E5',.5],['D#5',.5],['E5',2]]},
+];
+function renderSongs(){const L=$('songList');L.innerHTML='';
+ SONGS.forEach(s=>{const owned=S.owned.includes(s.id);const d=document.createElement('div');d.className='song';
+  const btn=owned?`<button class="buy owned" onclick="setCur('${s.id}')">${S.cur===s.id?'✓ Playing':'Set'}</button>`
+   :(s.price<10?`<button class="buy" onclick="buyKids('${s.id}')">${money(s.price)}</button>`
+   :`<button class="buy" onclick="startWizard('${s.id}')">${money(s.price)}</button>`);
+  d.innerHTML=`<div class="ti"><b>${s.t}</b><span>${s.cat}</span></div>${btn}`;L.appendChild(d);});}
+function setCur(id){S.cur=id;$('curTrack').textContent=SONGS.find(x=>x.id===id).t;renderSongs();}
+function buyKids(id){const s=SONGS.find(x=>x.id===id);openCheckout('Buka Lagu: '+s.t,'Akses permanen. Satu pembayaran, satu lagu, tanpa kejutan.',s.price,()=>{S.owned.push(id);setCur(id);toast('🎉 '+s.t+' terbuka!');confetti(40);});}
+
+/* ============ CHECKOUT SIMPLE ============ */
+let coCb=null;
+function openCheckout(t,d,p,cb){coCb=cb;$('coTitle').textContent=t;$('coDesc').textContent=d;$('coPrice').textContent=money(p);openMo('mCheckout');}
+function paySimple(){if(!coCb)return;const p=parseFloat($('coPrice').textContent.replace('$',''));closeMo('mCheckout');
+ if(!deduct(p))return;const cb=coCb;coCb=null;setTimeout(()=>{cb&&cb();},500);}
+
+/* ============ WIZARD 8 TAHAP ============ */
+const FEES=[
+ ['Lisensi Lagu','Hak dengar & mainkan atas karya pilihan Anda.'],
+ ['Digital Rights Verification — $12.99','Notaris digital mengkonfirmasi bahwa notasi yang Anda beli benar-benar notasi.'],
+ ['Secure Escrow Enrollment — $9.99','Pembayaran Anda disimpan dalam amplop digital bersegel hingga aktivasi tuntas.'],
+ ['Regional Compliance Levy — $14.99','Diwajibkan oleh Ministry of Melodies, Skedul 4 Pasal 12, untuk distribusi lintas tangga nada.'],
+ ['Priority Delivery Queue — $19.99','Tanpa ini, notasi Anda tiba menurut abjad, bukan menurut musikalitas.'],
+ ['Anti-Piracy Watermark Removal — $24.99','Setiap not dikirim dengan watermark terlihat di tengah birama. Ini menghapusnya.'],
+ ['Certificate of Authenticity — $29.99','Ditandatangani tangan oleh asisten dari Chief Piano Officer kami.'],
+ ['Final Activation Handshake — $34.99','Teknisi bersertifikat menjabat tangan piano Anda secara jarak jauh untuk meresmikan kepemilikan.'],
+];
+let wz=null;
+function startWizard(id){const s=SONGS.find(x=>x.id===id);
+ wz={song:s,step:0,paid:0,stages:[{n:FEES[0][0],d:FEES[0][1],f:s.price},...FEES.slice(1).map(f=>{const[nm,ds]=f.split(' — ');return{n:nm,d:ds,f:parseFloat(ds.replace('$',''))||0};})]};
+ // tahap 1 = harga lagu; tahap 2-8 = fee (fee sudah include angka di desc, parse manual):
+ wz.stages=[{n:'Lisensi Lagu: '+s.t,d:'Hak dengar & mainkan atas karya pilihan Anda.',f:s.price},
+  {n:'Digital Rights Verification',d:'Notaris digital mengkonfirmasi bahwa notasi yang Anda beli benar-benar notasi.',f:12.99},
+  {n:'Secure Escrow Enrollment',d:'Pembayaran Anda disimpan dalam amplop digital bersegel hingga aktivasi tuntas.',f:9.99},
+  {n:'Regional Compliance Levy',d:'Diwajibkan Ministry of Melodies, Skedul 4 Pasal 12, untuk distribusi lintas tangga nada.',f:14.99},
+  {n:'Priority Delivery Queue',d:'Tanpa ini, notasi Anda tiba menurut abjad, bukan menurut musikalitas.',f:19.99},
+  {n:'Anti-Piracy Watermark Removal',d:'Setiap not dikirim dengan watermark terlihat di tengah birama. Ini menghapusnya.',f:24.99},
+  {n:'Certificate of Authenticity',d:'Ditandatangani tangan oleh asisten dari Chief Piano Officer kami.',f:29.99},
+  {n:'Final Activation Handshake',d:'Teknisi bersertifikat menjabat tangan piano Anda secara jarak jauh untuk meresmikan kepemilikan.',f:34.99}];
+ wzRender();openMo('mWizard');}
+function wzTotal(){return wz.stages.reduce((a,b)=>a+b.f,0);}
+function wzRender(){const st=wz.stages[wz.step];
+ $('wzTitle').textContent='Aktivasi: '+wz.song.t;
+ $('wzSteps').innerHTML=wz.stages.map((_,i)=>`<i class="${i<wz.step?'done':i===wz.step?'cur':''}"></i>`).join('');
+ $('wzStageName').textContent=`TAHAP ${wz.step+1} DARI 8`;
+ $('wzFeeName').textContent=st.n;$('wzFee').textContent=money(st.f);$('wzFeeDesc').textContent=st.d;
+ $('wzPaid').textContent=money(wz.paid);$('wzLeft').textContent=money(wzTotal()-wz.paid);
+ $('wzBtn').textContent=`Bayar ${money(st.f)} & Lanjut ke Tahap ${wz.step+2>8?'Final':wz.step+2}`;
+ $('wzBtn').onclick=wzPay;}
+function wzPay(){const st=wz.stages[wz.step];if(!deduct(st.f))return;wz.paid+=st.f;wz.step++;
+ if(wz.step>=8){closeMo('mWizard');S.owned.push(wz.song.id);setCur(wz.song.id);confetti(90);
+  toast('✅ Aktivasi tuntas. 8 kwitansi telah dikirim ke email Anda. Selamat menikmati.');wz=null;}
+ else wzRender();}
+function wzAbort(){if(confirm('Batalkan aktivasi? Pembayaran tahap sebelumnya hangus sebagai biaya pemrosesan.')){closeMo('mWizard');toast('Aktivasi dibatalkan. Pembayaran sebelumnya disimpan sebagai kenangan.',true);wz=null;}}
+
+/* ============ GACHA (chest) ============ */
+function openGacha(){openMo('mGacha');}
+function rollChest(price,btn){if(!deduct(price))return;
+ const chest=$('chest');chest.classList.add('open');
+ setTimeout(()=>{chest.classList.remove('open');closeMo('mGacha');showResult(price);},1100);}
+const JUNK=['+500 XP Simbolis','Sticker Keberuntungan','Charm Berkilau','Store Credit $5.00','Tepuk Tangan Digital'];
+function showResult(price){
+ // DROP TABLE ASLI: 55% junk, 45% lagu anak. Lagu mahal TIDAK ADA di chest.
+ let item,rar;
+ if(Math.random()<0.55){rar='COMMON';item={junk:JUNK[Math.floor(Math.random()*JUNK.length)]};}
+ else{const kids=SONGS.filter(s=>s.price>0&&s.price<10&&!S.owned.includes(s.id));
+  const r=Math.random();rar=r<.1?'MYTHIC':r<.4?'LEGENDARY':'RARE';
+  item=kids.length?{song:kids[Math.floor(Math.random()*kids.length)]}:{junk:'Store Credit $5.00'};}
+ const col={COMMON:'#9a9aa5',RARE:'#7fb4ff',LEGENDARY:'#c07dff',MYTHIC:'#ffd700'}[rar];
+ $('rsRar').textContent='— '+rar+' —';$('rsRar').style.color=col;
+ $('rsIcon').textContent=item.song?'🎼':'🎀';
+ $('rsItem').textContent=item.song?item.song.t:item.junk;
+ $('rsFlv').textContent={COMMON:'Setiap perjalanan agung dimulai dari hal kecil.',RARE:'Cahaya biru. Hati Anda bergetar, hampir.',LEGENDARY:'Arsip bergetar. Hampir tak terbayangkan.',MYTHIC:'Langit terbuka. Sejarah mencatat malam ini.'}[rar];
+ if(item.song){S.owned.push(item.song.id);renderSongs();}else if(item.junk.includes('$5')){S.bal+=5;updNav();}
+ openMo('mResult');confetti(rar==='MYTHIC'?120:50);}
+
+/* ============ SHOP 50 OFFERS ============ */
+const OFFERS=[
+['🎟️','Skip Ticket','Lewati satu timer tunggu apa pun.',0.99],
+['⚡','XP Booster x2','Semua XP bernilai dua kali lipat.',4.99],
+['🔑','Golden Keycap','Skin tuts emas untuk satu tuts.',2.99],
+['⏱️','Metronome Pro','Klik dengan suara kayu mahoni.',3.99],
+['🔍','Sheet Zoom','Perbesar partitur hingga level sel.',1.99],
+['🖐️','Left-Hand Trainer','Program khusus tangan kiri.',9.99],
+['🤚','Right-Hand Trainer','Program khusus tangan kanan.',9.99],
+['','Ambidexterity Bundle','Kedua tangan, satu harga bundel.',19.99],
+['🏛️','Concert Hall Reverb','Gema aula konser di kamar Anda.',6.99],
+['🕯️','Candlelight Theme','Suasana belajar abad ke-19.',4.99],
+['🪨','Marble Key Skin','Tuts rasa marmer Carrara.',7.99],
+['🌳','Rosewood Finish','Bodi piano rasa rosewood.',12.99],
+['🦴','Ivory Classics Pack','Estetika klasik koleksi museum.',14.99],
+['🎭','Duet Matchmaking','Dicarikan partner duet secara ajaib.',8.99],
+['🤖','Duet Partner Bot','Partner duet yang tidak pernah salah.',24.99],
+['👏','Applause Soundpack','Tepuk tangan setelah tiap lagu.',2.49],
+['🌹','Standing Ovation Pack','Penonton berdiri otomatis.',5.99],
+['💐','Flower Throw Add-on','Bunga melayang ke panggung Anda.',3.49],
+['🔁','Encore Button','Tombol untuk meminta diri sendiri ulang.',1.49],
+['🌫️','Stage Fog FX','Kabut panggung volumetrik.',4.49],
+['💡','Spotlight Follow','Lampu mengikuti tangan Anda.',6.49],
+['🦶','Golden Pedal','Pedal emas (dekoratif, penuh makna).',9.49],
+['🤫','Silent Practice Mode','Bermain tanpa suara, tetap berkelas.',2.99],
+['🏘️','Neighbor-Friendly Volume','Volume yang meminta maaf.',1.99],
+['🐈','Cat-Deterrent Field','Menjaga kucing dari tuts hitam.',12.99],
+['🪑','Bench Height AI','Kursi menyesuaikan aura Anda.',7.49],
+['😇','Posture Halo','Cincin cahaya penanda postur benar.',11.99],
+['🔢','Finger Numbers Overlay','Nomor jari melayang di atas tuts.',3.99],
+['🈺','Note Name Aura','Nama not berpendar saat disentuh.',4.99],
+['🧭','Chord Compass','Menunjuk akar chord secara spiritual.',13.99],
+['🛣️','Scale Autopilot','Demo tangga nada tanpa batas.',16.99],
+['🌀','Arpeggio Assist','Arpeggio mengalir seperti air.',15.99],
+['⚡','Trill Turbo','Trill dua kali lebih cepat.',18.99],
+['🧤','Octave Stretch Glove','Sarung tangan virtual peregangan oktaf.',21.99],
+['🏰','Memory Palace Mode','Hafalkan lagu dalam istana memori.',23.99],
+['🎓','Exam Prep Crash','Persiapan ujian kilat 1 malam.',29.99],
+['🖼️','Certificate Frame','Bingkai untuk sertifikat masa depan.',5.49],
+['🚩','Brag Banner','Spanduk prestasi di profil Anda.',3.29],
+['💍','Profile Gold Ring','Cincin emas di sebelah nama Anda.',6.29],
+['🕺','Animated Avatar Pianist','Avatar yang bermain menggantikan Anda.',9.29],
+['🧱','Name on Wall','Nama Anda di dinding lobi digital.',49.99],
+['🏆','Founder\'s Plaque','Plakat pendiri (edisi sangat terbatas).',99.99],
+['⏭️','Time-Skip 1 Day','Lompati satu hari kurikulum.',19.99],
+['📅','Time-Skip 7 Days','Lompati satu minggu kurikulum.',89.99],
+['🎀','Mystery Sticker','Sticker acak. Isinya sticker.',0.99],
+['🍀','Lucky Charm +1%','Keberuntungan chest +1% (klaim).',27.99],
+['🏷️','Chest Discount Coupon','Kupon diskon chest sekali pakai.',34.99],
+['🌟','Ad-Free Aura','Cahaya keemasan penanda bebas iklan.',8.99],
+['🎧','Whisper Mode ASMR','Narasi lesson berbisik menenangkan.',4.79],
+['💎','Diamond Hands Certificate','Sertifikat resmi bertangan berlian.',149.99],
+];
+function renderShop(){const g=$('shopGrid');g.innerHTML='';
+ OFFERS.forEach((o,i)=>{const d=document.createElement('div');d.className='off';
+  const tag=i===47?'BEST VALUE':i===49?'PRESTIGE':i===43?'POPULAR':'';
+  d.innerHTML=`${tag?`<span class="tagx">${tag}</span>`:''}<span class="n">#${i+1}</span><span class="ic">${o[0]}</span><b>${o[1]}</b><p>${o[2]}</p><span class="pr">${money(o[3])}</span>
+  <button class="buy" style="margin-top:6px" onclick="buyOffer(${i})">Beli</button>`;g.appendChild(d);});}
+function buyOffer(i){const o=OFFERS[i];
+ openCheckout(o[1],o[2]+' Ditambahkan permanen ke koleksi Anda.',o[3],()=>{toast('🛍️ '+o[1]+' masuk koleksi Anda.');confetti(25);});}
+
+/* ============ VAPORWARE ============ */
+const VAP={
+ sync:{title:'NeuroSync™ Skill Transfer',bought:false,ups:0,base:149.99,
+  desc:'Menginisialisasi unggahan memori otot nocturnal. Jangan tutup aplikasi selama sinkronisasi.',
+  stats:['Menyelaraskan neuron 7 dari 8…','Menyelaraskan ulang neuron 7…','Neuron 7 meminta jeda singkat…','Berkonsultasi dengan neuron 8 perihal neuron 7…','Neuron 7 kembali. Motivasi menurun.'],
+  ups:[['Neural Catalyst',24.99,'Mempercepat penyerapan sinkronisasi.'],['Priority Neuron Queue',49.99,'Neuron Anda dilayani di loket terpisah.']]},
+ holo:{title:'Maestro Hologram™ Live Mentor',bought:false,ups:0,base:199.99,
+  desc:'Mengkalibrasi proyektor volumetrik. Arahkan perangkat Anda ke ruang kosong dan tunggu dengan hormat.',
+  stats:['Menghangatkan proyektor…','Meredupkan ruangan (mohon tunggu dalam gelap)…','Maestro sedang memilih busana…','Maestro akan hadir saat Anda tidak melihat…'],
+  ups:[['Lumen Booster Pack',39.99,'Menerangi hologram dari dalam.'],['Eyebrow Intensity Pack',19.99,'Mempertajam raised eyebrow maestro.']]},
+};
+let vpKey=null,vpInt=null;
+function vaporOpen(k){const v=VAP[k];vpKey=k;
+ if(!v.bought){openCheckout(v.title,'Aktivasi sekali bayar. Manfaat berlangsung selamanya (dan seterusnya).',v.base,()=>{v.bought=true;vaporModal();});}
+ else vaporModal();}
+function vaporModal(){const v=VAP[vpKey];openMo('mVapor');
+ $('vpTitle').textContent=v.title;$('vpDesc').textContent=v.desc;
+ $('vpBar').style.width='0';setTimeout(()=>$('vpBar').style.width='99%',120);
+ let si=0;$('vpStat').textContent=v.stats[0];
+ clearInterval(vpInt);vpInt=setInterval(()=>{si=(si+1)%v.stats.length;$('vpStat').textContent=v.stats[si];},3200);
+ $('vpUps').innerHTML=v.ups.map((u,i)=>`<button onclick="vaporUps(${i})">${u[0]} — ${money(u[1]+v.ups*10)}</button>`).join('');
+ if(vpKey==='sync')$('chipSync').classList.remove('hidden');else $('chipHolo').classList.remove('hidden');}
+function vaporUps(i){const v=VAP[vpKey];const u=v.ups[i];const p=u[1]+v.ups*10;
+ if(!deduct(p))return;v.ups++;toast('✨ '+u[0]+' diserap sistem.');
+ $('vpBar').style.width='97%';setTimeout(()=>$('vpBar').style.width='99%',700);
+ $('vpUps').innerHTML=v.ups.map((x,j)=>`<button onclick="vaporUps(${j})">${x[0]} — ${money(x[1]+v.ups*10)}</button>`).join('');}
+function vaporClose(){closeMo('mVapor');clearInterval(vpInt);}
+$('chipSync').onclick=()=>{vpKey='sync';vaporModal();};
+$('chipHolo').onclick=()=>{vpKey='holo';vaporModal();};
+
+/* ============ TOPUP ============ */
+const TU=[[9.99,10,''],[49.99,55,'+10%'],[99.99,115,'+15%'],[199.99,240,'WHALE PACK 🐋']];
+function renderTopup(){$('tuList').innerHTML='';TU.forEach(t=>{const b=document.createElement('button');
+ b.innerHTML=`💵 Bayar ${money(t[0])} → Kredit ${money(t[1])} <b style="color:var(--gold)">${t[2]}</b>`;
+ b.onclick=()=>{closeMo('mTopup');setTimeout(()=>{S.bal+=t[1];updNav();toast('💳 Kredit '+money(t[1])+' ditambahkan.');confetti(30);},900);};
+ $('tuList').appendChild(b);});}
+$('wallet').onclick=()=>openMo('mTopup');
+document.querySelector('.navbtn.solid').onclick=()=>{renderTopup();openMo('mTopup');};
+
+/* ============ OFFER POPUP 30s ============ */
+const OFFER_ROT=[
+ ['🎁','WHALE WEEKEND','Golden Chest bercahaya ekstra malam ini. Isi dalamnya dikabarkan agung.','199.99','179.99',()=>openGacha()],
+ ['🧠','NeuroSync™ Malam Ini','Sinkronisasi nocturnal dengan harga perkenalan. Tangan Anda besok bukan tangan Anda hari ini.','149.99','99.99',()=>vaporOpen('sync')],
+ ['💎','Diamond Hands Certificate','Simbol tertinggi tangan yang telah melalui segalanya.','149.99','149.99',()=>buyOffer(49)],
+ ['💳','Bonus Top-Up Digandakan','Kredit tambahan untuk Anda yang serius terhadap kemajuan.','0.00','OPEN',()=>{renderTopup();openMo('mTopup');}],
+ ['👻','Maestro Menunggu','Hologram maestro siap hadir di sisi piano Anda malam ini.','199.99','159.99',()=>vaporOpen('holo')],
+ ['⏭️','Time-Skip 7 Days','Satu minggu kurikulum, dilewati dalam satu klik.','89.99','69.99',()=>buyOffer(43)],
+];
+let ofIdx=0,ofInt=null;
+function openOffer(){if(document.querySelector('.mo:not(.hidden)'))return;
+ const o=OFFER_ROT[ofIdx%OFFER_ROT.length];ofIdx++;
+ $('ofIcon').textContent=o[0];$('ofTitle').textContent=o[1];$('ofDesc').textContent=o[2];
+ $('ofOld').textContent=o[3]===o[4]?'':('$'+o[3]);$('ofNew').textContent=o[4]==='OPEN'?'OPEN':('$'+o[4]);
+ $('ofBtn').textContent='Klaim Penawaran';$('ofBtn').onclick=()=>{closeMo('mOffer');o[5]();};
+ openMo('mOffer');let s=27;$('ofSec').textContent=s;$('ofBar').style.width='100%';
+ clearInterval(ofInt);ofInt=setInterval(()=>{s--;$('ofSec').textContent=s;$('ofBar').style.width=(s/27*100)+'%';
+  if(s<=0){clearInterval(ofInt);closeMo('mOffer');toast('Penawaran hangus. Yang baru tiba sebentar lagi.',true);}},1000);}
+setInterval(openOffer,30000);setTimeout(openOffer,12000);
+
+/* ============ INIT ============ */
+renderSongs();renderShop();renderTopup();updNav();
+setTimeout(()=>toast(' Selamat datang. Pelajaran gratis Anda telah disiapkan.'),800);
+</script>
+</body>
+</html>
